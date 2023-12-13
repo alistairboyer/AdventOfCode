@@ -5,7 +5,7 @@ https://adventofcode.com/2023
 My favourite output so far:
                                                                                                                                             
                                                                                                                                             
-                                                                                                                                            
+```                                                                                                                                        
                                                                                                   ┌┐                                        
                                                                            ┌┐                   ┌┐│└┐┌─┐                                    
                                                                        ┌─┐ ││ ┌─┐            ┌──┘└┘┌┘│┌┘┌┐                                  
@@ -140,4 +140,4 @@ My favourite output so far:
                                                                                ┌┘└─┐           │┌┘┌┘┌┘                                      
                                                                                └─┐┌┘           └┘ └┐└┐                                      
                                                                                  └┘                └─┘                                      
-                                                                                                             
+```
