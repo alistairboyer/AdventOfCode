@@ -129,9 +129,7 @@ class Network:
         """
         Convert an array to str. Values not included in Pipe.STR replaced with default.
         """
-        return "\n".join(
-            "".join([Pipe.STR.get(x, default) for x in row]) for row in a
-        )
+        return "\n".join("".join([Pipe.STR.get(x, default) for x in row]) for row in a)
 
     def __str__(self):
         return self.print_array(self.pipesnp)
@@ -256,7 +254,7 @@ class Network:
                     if x in {Pipe("F"), Pipe("L")}:
                         last_corner = x
                         continue
-                    
+
                     # end a corner
                     if x == Pipe("J"):
                         if last_corner == Pipe("F"):
@@ -280,22 +278,26 @@ class Network:
 
 def go():
     data_list = list()
-    
+
     from DataSample import DAY_10 as SAMPLE
+
     data_list.append(("Sample", SAMPLE))
-    
+
     from DataSample import DAY_10_2 as SAMPLE_2
+
     data_list.append(("Sample 2", SAMPLE_2))
 
     from DataSample import DAY_10_3 as SAMPLE_3
+
     data_list.append(("Sample 3", SAMPLE_3))
 
     try:
         from DataFull_ import DAY_10 as DATA
+
         data_list.append(("Full Data", DATA))
     except ImportError:
         pass
-   
+
     for name, data in data_list:
 
         net = Network(data.splitlines())

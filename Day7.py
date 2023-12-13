@@ -5,10 +5,10 @@ class Game:
         if data is not None:
             self.load(data)
 
-    def load(self, data):      
+    def load(self, data):
         for line in data:
             if not line:
-                continue           
+                continue
             self.hands.append(self._HandClass(*line.split()))
 
     def sorted(self, reverse=True):
@@ -120,7 +120,7 @@ class HandWithJokers(Hand):
         # if all jokers, then five of a kind
         if number_jokers == 5:
             return 7
-        
+
         # directly correlate rank to size of largest set
         # boost largest set with the extra jokers
         rank_value = 2 * (card_counts[0][0] + number_jokers) - 2
@@ -137,16 +137,18 @@ class HandWithJokers(Hand):
 
 def go():
     data_list = list()
-    
+
     from DataSample import DAY_7 as SAMPLE
+
     data_list.append(("Sample", SAMPLE))
-    
+
     try:
         from DataFull_ import DAY_7 as DATA
+
         data_list.append(("Full Data", DATA))
     except ImportError:
         pass
-   
+
     for name, data in data_list:
 
         for use_jokers in {False, True}:
@@ -156,6 +158,7 @@ def go():
                 print(game)
             print("Score: ", game.score())
             print()
+
 
 if __name__ == "__main__":
     go()

@@ -46,17 +46,21 @@ def first_and_last_regex_match(text: str, match: str = r"\d") -> int:
     matches = regex.findall(text)
     return matches
 
+
 def go():
     data_list = list()
-    
+
     from DataSample import DAY_1 as SAMPLE
+
     data_list.append(("Part 1 Sample", SAMPLE))
-    
+
     from DataSample import DAY_1_PART2 as SAMPLE_PART_2
+
     data_list.append(("Part 2 Sample", SAMPLE_PART_2))
 
     try:
         from DataFull_ import FULL_DATA
+
         data_list.append(("Full Data", FULL_DATA))
     except ImportError:
         pass
@@ -89,7 +93,8 @@ def go():
         # print the sum
         print("  Digit and spelled out:", sum(matches))
 
-        print() 
+        print()
+
 
 if __name__ == "__main__":
     go()

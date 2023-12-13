@@ -102,27 +102,33 @@ class Universe:
 
 def go():
     data_list = list()
-    
+
     from DataSample import DAY_11 as SAMPLE
+
     data_list.append(("Sample", SAMPLE))
 
     try:
         from DataFull_ import DAY_11 as DATA
+
         data_list.append(("Full Data", DATA))
     except ImportError:
         pass
-   
+
     for name, data in data_list:
-        print(name)    
+        print(name)
         u = Universe(data.splitlines())
 
         # u.expand()
         # print(u.galactic_distances())
 
-        print (f"  {u.data.sum()} galaxies found")
+        print(f"  {u.data.sum()} galaxies found")
         for cost in [2, 1_000_000]:
-            print(f"  Total distances with cost {cost}:", u.galactic_distances_with_cost(cost))
+            print(
+                f"  Total distances with cost {cost}:",
+                u.galactic_distances_with_cost(cost),
+            )
 
         print()
+
 
 go()
