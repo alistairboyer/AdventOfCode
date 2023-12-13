@@ -58,7 +58,7 @@ def load(data):
 
         card = ScratchCard.from_text(line)
         cards[card.id] = card
-    
+
     return cards
 
 
@@ -94,7 +94,10 @@ def go():
                     # don't duplicate after end of list
                     break
 
-        print("  Card count after duplication:", sum(card.instances for card in cards.values()))
+        print(
+            "  Card count after duplication:",
+            sum(card.instances for card in cards.values()),
+        )
         print()
 
 
