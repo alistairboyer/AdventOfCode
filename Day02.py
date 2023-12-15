@@ -19,7 +19,7 @@ class GameObservations:
 
     def observed_outcome_from_text(self, text):
         """
-        Load data from text.    
+        Load data from text.
         """
         # split observations
         for color_info in text.split(","):
@@ -91,9 +91,16 @@ def go():
             if game.is_outcome_possible(red=12, green=13, blue=14):
                 sum_of_possible_ids += game.id
                 possible = True
-            
+
             if "Sample" in name:
-                print(" ", "Game", game.id, ":", game.power(), "Possible" if possible else "")
+                print(
+                    " ",
+                    "Game",
+                    game.id,
+                    ":",
+                    game.power(),
+                    "Possible" if possible else "",
+                )
 
         print("  Sum of ids of possible games: ", sum_of_possible_ids)
         print("  Sum of power of games: ", sum_of_power)
