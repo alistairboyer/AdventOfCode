@@ -1,6 +1,7 @@
 import numpy
 import collections
 
+
 class Beam:
     N = 1 << 0
     E = 1 << 1
@@ -42,14 +43,13 @@ class Beam:
                 yield direction
             else:
                 yield from [cls.E, cls.W]
-        
+
         # vertical beam splitter
         if c == "|":
             if direction & cls.VERTICAL:
                 yield direction
             else:
                 yield from [cls.N, cls.S]
-
 
     # vectors to walk in each direction
     DELTAS = {
@@ -61,12 +61,12 @@ class Beam:
 
     # str representation of the directions
     STR = {
-        N : "↑",
-        S : "↓",
+        N: "↑",
+        S: "↓",
         E: "→",
         W: "←",
-        N | S : "↕",
-        W | E : "↔",
+        N | S: "↕",
+        W | E: "↔",
         N | E: "└",
         N | W: "┘",
         S | E: "┌",
@@ -115,14 +115,12 @@ class Network:
         """
         return self.print_array(self.journey, ".")
 
-
     def reset_journey(self):
         """
         Reset a journey log and empty the beams.
         """
         self.journey = numpy.zeros(self.data.shape, int)
         self.beams = collections.deque()
-
 
     def log_step(self, loc, direction):
         """
@@ -133,11 +131,10 @@ class Network:
             raise ValueError("Light already travelled here.")
         self.journey[loc] |= direction
 
-
     def _step(self):
         """
         Step the light beam through the network.
-        """      
+        """
 
         # get a light beam
         loc, direction = self.beams.pop()
@@ -148,7 +145,7 @@ class Network:
         # will raise ValueError if already visited here in this direction
         except ValueError:
             return
-        
+
         # get the next location
         new_loc = Beam.step(loc, direction)
 
@@ -187,55 +184,54 @@ def go():
         pass
 
     for name, data in data_list:
-        print (name)
+        print(name)
         print()
 
-        print ("Part 1")
+        print("Part 1")
         n = Network(data.splitlines())
-        print (n)
-        print ("Energising beams")
-        n.walk((0,0), Beam.E)
+        print(n)
+        print("Energising beams")
+        n.walk((0, 0), Beam.E)
         print(n.journey_str())
-        print ((n.journey>0).sum(),"energised")
-        print ()
+        print((n.journey > 0).sum(), "energised")
+        print()
 
-        print ("Part 2")
+        print("Part 2")
         # brute force bacy!
         max_energised = 0
         max_at = None
         for i in range(n.data.shape[0]):
             # top, south
             n.walk((0, i), Beam.S)
-            energised = (n.journey>0).sum()
+            energised = (n.journey > 0).sum()
             if energised > max_energised:
                 max_energised = energised
                 max_at = (0, i), Beam.S
 
             # bottom, north
-            n.walk((n.data.shape[0]-1,i), Beam.N)
-            energised = (n.journey>0).sum()
+            n.walk((n.data.shape[0] - 1, i), Beam.N)
+            energised = (n.journey > 0).sum()
             if energised > max_energised:
                 max_energised = energised
-                max_at = (n.data.shape[0]-1, i), Beam.N
+                max_at = (n.data.shape[0] - 1, i), Beam.N
 
         for i in range(n.data.shape[1]):
             # left, east
             n.walk((i, 0), Beam.E)
-            energised = (n.journey>0).sum()
+            energised = (n.journey > 0).sum()
             if energised > max_energised:
                 max_energised = energised
                 max_at = (i, 0), Beam.E
 
             # right, west
-            n.walk((i, n.data.shape[1]-1), Beam.W)
-            energised = (n.journey>0).sum()
+            n.walk((i, n.data.shape[1] - 1), Beam.W)
+            energised = (n.journey > 0).sum()
             if energised > max_energised:
                 max_energised = energised
-                max_at = (i, n.data.shape[1]-1), Beam.W
+                max_at = (i, n.data.shape[1] - 1), Beam.W
 
         loc, dirn = max_at
-        print ("Max energised", max_energised, "at", loc, "pointing", Beam.STR[dirn])
-
+        print("Max energised", max_energised, "at", loc, "pointing", Beam.STR[dirn])
 
 
 if __name__ == "__main__":

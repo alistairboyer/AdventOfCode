@@ -9,9 +9,14 @@ Advent of Code 2023
   My favourite ouput so far was from Day 10!
   ![Pipe maze output from Advent of Code 2023 Day 10](Day10.png)
 
-                                                                                                                                            
+
+Day 15
+------
+  Quite a quick challenge today! Easy to expliot the datastructures in python to perform this calculation exactly as described in the challenge. I followed the instructions verbatim for HASH and popped all the information into an OrderedDict, expliting del to remove anything. This was good because it gave me time to sort out day 12.
+
+
 Day 16
-======
+------
   There is another christmas maze, this time with light paths and mirrors.
 
   It is straightforwards to set up the maze and iteritively follow the light path. 
@@ -31,6 +36,16 @@ Day 16
   with light repeating multiple times.
   
 
+Day 5
+-----
+  FINALLY DONE! This has been bothering me for a few days but starting late gave plenty of other challenges to distract from this one.
+  Very easy to set up the first part by walking through the mappings. 
+  Then BANG the second part hits, and there is no way you can brute force this one so time for a new approach. 
+  I had a basic plan quite quickly but it took lots of debugging and doodling on paper to get the order of operations and iterations exactly right.
+  
 
+
+
+   
   
   
