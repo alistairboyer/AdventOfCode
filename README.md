@@ -43,8 +43,14 @@ Day 5
   Then BANG the second part hits, and there is no way you can brute force this one so time for a new approach. 
   I had a basic plan quite quickly but it took lots of debugging and doodling on paper to get the order of operations and iterations exactly right.
   
-
-
+Day 19
+------
+  The first part was nice and easy, just have to parse the commands
+  then a little recursion gives the answer very quickly.
+  Onto part two and today it straight tells you not to bother brute forcing with 167 million million combinations.
+  The problem seems very similar to day 5 where ranges need splitting and dispatching off to various destinations.
+  The code didn't take very long to adapt to the given task but I could not get the correct answer for a long time.
+  Then.... I noticed that  I used inclusive ranges and was feeding in  (0,4000) instead of (1,4000) and there you go!
 
    
   

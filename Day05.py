@@ -1,5 +1,6 @@
 import collections
 
+
 class Mapping:
     __slots__ = "destination", "source", "range"
 
@@ -132,7 +133,7 @@ class Mappings:
         Add a new mapping to the mappings. *args passed to Mapping().
         """
         new_mapping = Mapping(*args)
-        #for mapping in self.mappings:
+        # for mapping in self.mappings:
         #    if mapping.is_overlapped(new_mapping):
         #        raise ValueError("Overlaps with existing mapping")
         self.mappings.append(new_mapping)
@@ -150,7 +151,7 @@ class Mappings:
         merging = merging.mappings
         for mapping in self.mappings:
             complete, merging = self._merge_mapping(mapping, merging)
-            
+
             # merging sections that are complete
             for m in complete:
                 result.add(m)
@@ -302,15 +303,15 @@ def go():
         min_location = None
         for seed_id in seeds:
 
-            # start with 
+            # start with
             print(f"  seed={seed_id}", end=" ")
 
             # get the correct mapping for the attribute
             for n in range(1, len(ATTRIBUTES)):
-                map = cumul_maps[n-1]
+                map = cumul_maps[n - 1]
                 attribute_id = map.forward(seed_id)
                 print(f"{ATTRIBUTES[n]}={attribute_id}", end=" ")
-            
+
             # calculate miniumun location
             if min_location is None:
                 min_location = attribute_id
@@ -322,20 +323,20 @@ def go():
 
         print()
         print("Part 2")
-        
+
         # load the seeds as a mapping
         seed_mappings = Mappings("seed")
         for n in range(0, len(seeds), 2):
-            seed_mappings.add(seeds[n], seeds[n], seeds[n+1])
-        
+            seed_mappings.add(seeds[n], seeds[n], seeds[n + 1])
+
         # merge the total map from before
-        # but set keep_merging_overlapped to False to only keep parts of 
+        # but set keep_merging_overlapped to False to only keep parts of
         # the map that lie within the seed id limits
         m = seed_mappings.merge(cumul_maps[-1], keep_merging_overlapped=False)
         # order the mappings based on destination
-        m.mappings.sort(key=lambda m:m.destination)
+        m.mappings.sort(key=lambda m: m.destination)
         print(m)
-        print ("Min location:", m.mappings[0].destination)
+        print("Min location:", m.mappings[0].destination)
         print()
 
 
