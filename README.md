@@ -52,6 +52,15 @@ Day 19
   The code didn't take very long to adapt to the given task but I could not get the correct answer for a long time.
   Then.... I noticed that  I used inclusive ranges and was feeding in  (0,4000) instead of (1,4000) and there you go!
 
-   
-  
+Day 22
+------
+  I spend a lot of my early python journey in Blender and this give a great opportunity to visualise a falling block challenge.
+  I created a Brick class that contained brick information and used a numpy array of objects within a Stack class to represent the stack of bricks.
+  Then the falling is implemented from the bottom of the stack up by slicing beneath the xy cross section of each block and checking for the first object.
+  The objects are linked together so that the reliance of blocks on blocks underneath can be checked later.
+  The only major issue I had was that my code didn't drop blocks that were above nothing to start with, but after that everything worked ok!
+  ![Falling blocks sample from Advent of Code 2023 Day 22](Day22.gif)
+
+
+
   
