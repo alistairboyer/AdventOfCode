@@ -61,6 +61,12 @@ Day 22
   The only major issue I had was that my code didn't drop blocks that were above nothing to start with, but after that everything worked ok!
   ![Falling blocks sample from Advent of Code 2023 Day 22](Day22.gif)
 
-
+Day 25
+------
+  I think we had been bad this year because santa gave a graph problem on Christmas morning.
+  I had a quick look at graphviz's neato version of the challenge and it is very clear to see the three links that needed cutting. 
+  Algorithmically, I started from each node and condensed edges to adjoining nodes until the number of links going out was only three. 
+  This was quite slow and does not guarantee an answer for all graphs but it worked!
+  ![Sample graph from Advent of Code 2023 Day 25](Day25.png)
 
   

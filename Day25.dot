@@ -1,0 +1,18 @@
+strict graph {
+  jqt -- {ntq nvd rhn xhk}
+  rhn -- {bvb hfx jqt xhk}
+  xhk -- {ntq bvb jqt rhn hfx}
+  nvd -- {jqt pzl lhk qnr cmg}
+  rsh -- {rzs frs pzl lsr}
+  frs -- {lsr rsh qnr lhk}
+  pzl -- {nvd hfx rsh lsr}
+  lsr -- {rsh pzl lhk rzs frs}
+  hfx -- {ntq bvb rhn pzl xhk}
+  cmg -- {bvb nvd lhk rzs qnr}
+  qnr -- {rzs frs cmg nvd}
+  lhk -- {lsr frs cmg nvd}
+  bvb -- {ntq rhn hfx xhk cmg}
+  ntq -- {hfx bvb jqt xhk}
+  rzs -- {rsh qnr cmg lsr}
+}
+
