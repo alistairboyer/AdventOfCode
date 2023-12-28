@@ -59,7 +59,7 @@ def go():
     data_list.append(("Part 2 Sample", SAMPLE_PART_2))
 
     try:
-        from DataFull_ import FULL_DATA
+        from DataFull_ import DAY_1 as FULL_DATA
 
         data_list.append(("Full Data", FULL_DATA))
     except ImportError:

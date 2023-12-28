@@ -1,0 +1,16 @@
+<svg viewBox="-1 -1 8 11">
+<line x1="0" y1="0" x2="6" y2="0" stroke="#70c710" stroke-linecap="round" />
+<line x1="6" y1="0" x2="6" y2="5" stroke="#0dc571" stroke-linecap="round" />
+<line x1="6" y1="5" x2="4" y2="5" stroke="#5713f0" stroke-linecap="round" />
+<line x1="4" y1="5" x2="4" y2="7" stroke="#d2c081" stroke-linecap="round" />
+<line x1="4" y1="7" x2="6" y2="7" stroke="#59c680" stroke-linecap="round" />
+<line x1="6" y1="7" x2="6" y2="9" stroke="#411b91" stroke-linecap="round" />
+<line x1="6" y1="9" x2="1" y2="9" stroke="#8ceee2" stroke-linecap="round" />
+<line x1="1" y1="9" x2="1" y2="7" stroke="#caa173" stroke-linecap="round" />
+<line x1="1" y1="7" x2="0" y2="7" stroke="#1b58a2" stroke-linecap="round" />
+<line x1="0" y1="7" x2="0" y2="5" stroke="#caa171" stroke-linecap="round" />
+<line x1="0" y1="5" x2="2" y2="5" stroke="#7807d2" stroke-linecap="round" />
+<line x1="2" y1="5" x2="2" y2="2" stroke="#a77fa3" stroke-linecap="round" />
+<line x1="2" y1="2" x2="0" y2="2" stroke="#015232" stroke-linecap="round" />
+<line x1="0" y1="2" x2="0" y2="0" stroke="#7a21e3" stroke-linecap="round" />
+</svg>

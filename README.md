@@ -42,7 +42,20 @@ Day 5
   Very easy to set up the first part by walking through the mappings. 
   Then BANG the second part hits, and there is no way you can brute force this one so time for a new approach. 
   I had a basic plan quite quickly but it took lots of debugging and doodling on paper to get the order of operations and iterations exactly right.
-  
+
+Day 18
+------
+  I used horizontal raycasting to find the area.
+  I considered each line and found the area between the trenches by inverting an "enclosed" variable.
+  Today's silly mistake was forgetting to reset the area counter so that my answer for part 1 was off by 62 (the example answer)!
+  Switching to part 2 meant that the horizonal part of the calculation took exactly the same time
+  but the vertical part was significantly slower because I was scanning line-by-line.
+  Thinking harder, the enclosed and trench area of a ray only changes on a row with at least one horizontal line.
+  Updating the algorithm only to look for horizontal lines and then consider the lines between each,
+  so now the time taken to calculate area is dependent only on the complexity of the shape and no the length of any line.
+  ![Sample lava trenches from Advent of Code 2023 Day 18](Day18.png)
+
+
 Day 19
 ------
   The first part was nice and easy, just have to parse the commands
