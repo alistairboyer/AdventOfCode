@@ -6,7 +6,9 @@ Advent of Code 2023
 
   I was a bit late to the party but here are some random solutions to the 2023 challenge using python.
 
-  My favourite ouput so far was from Day 10!
+
+Day 10
+------
   ![Pipe maze output from Advent of Code 2023 Day 10](Day10.png)
 
 
