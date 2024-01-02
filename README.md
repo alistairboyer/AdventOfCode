@@ -76,6 +76,11 @@ Day 22
   The only major issue I had was that my code didn't drop blocks that were above nothing to start with, but after that everything worked ok!
   ![Falling blocks sample from Advent of Code 2023 Day 22](Day22.gif)
 
+Day 24
+------
+  Not so much a problem in coding as a problem in maths! Pretty good rock throw though!
+
+
 Day 25
 ------
   I think we had been bad this year because santa gave a graph problem on Christmas morning.

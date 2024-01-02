@@ -856,6 +856,7 @@ class LavaTrench:
 
         # start off outside the area
         enclosed = False
+        last_x2 = None
 
         for x1, x2, topology_inversion in intersects:
 
@@ -889,6 +890,7 @@ class LavaTrench:
         # take the first line
         current_horizontal = horizontal[:1]
         current_vertical = set()
+        last_y = None
         # and add a dummy line to process the buffer
         for line in horizontal[1:] + [
             Line(Location(None, None), Location(None, None), "-#!", None)
@@ -918,7 +920,9 @@ class LavaTrench:
 
             # area along current line
             vertical_intersects = [(x, x, True) for x in current_vertical]
-            horizontal_intersects = [l.x_intersect_info for l in current_horizontal]
+            horizontal_intersects = [
+                line.x_intersect_info for line in current_horizontal
+            ]
             y_trench_area, y_enclosed_area = self._raycast_area_ltr(
                 vertical_intersects + horizontal_intersects
             )
