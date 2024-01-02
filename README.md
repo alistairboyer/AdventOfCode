@@ -85,6 +85,7 @@ Day 22
 Day 24
 ------
   Not so much a problem in coding as a problem in maths! Pretty good rock throw though!
+  ![Throwing rocks at hailstones sample from Advent of Code 2023 Day 24](Day24.gif)
 
 
 Day 25
