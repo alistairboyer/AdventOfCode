@@ -67,6 +67,12 @@ Day 19
   The code didn't take very long to adapt to the given task but I could not get the correct answer for a long time.
   Then.... I noticed that  I used inclusive ranges and was feeding in  (0,4000) instead of (1,4000) and there you go!
 
+Day 20
+------
+  What a whacky machine. I enjoyed setting up the classes for each module and the first part worked quite well.
+  The second part was quite frustrating and certainly a brute force approach dind't find anything quickly.
+  As as for earlier, the trick was to find the repeat interval of various nodes and then calculate the LCM.
+
 Day 22
 ------
   I spend a lot of my early python journey in Blender and this give a great opportunity to visualise a falling block challenge.

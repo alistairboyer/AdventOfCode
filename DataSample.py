@@ -62,6 +62,19 @@ DAY_21 = """
 """
 
 DAY_20 = """
+broadcaster -> a, b, c
+%a -> b
+%b -> c
+%c -> inv
+&inv -> a
+"""
+
+DAY_20_2 = """
+broadcaster -> a
+%a -> inv, con
+&inv -> b
+%b -> con
+&con -> output
 """
 
 DAY_19 = """
