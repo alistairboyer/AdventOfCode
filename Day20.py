@@ -34,7 +34,9 @@ class Machine:
             self.modules[module[1:]] = FlipFlop(self, module[1:], outputs.split(", "))
             return
         if module[0] == "&":
-            self.modules[module[1:]] = Conjunction(self, module[1:], outputs.split(", "))
+            self.modules[module[1:]] = Conjunction(
+                self, module[1:], outputs.split(", ")
+            )
             return
         if module == "broadcaster":
             self.modules[module] = Broadcaster(self, module, outputs.split(", "))
@@ -65,7 +67,7 @@ class Machine:
         while self._active_modules:
             module = self._active_modules.popleft()
             pulses = module.generate_pulse()
-            
+
             for pulse in pulses:
                 self._pulses.append(pulse)
 
@@ -252,13 +254,13 @@ def go():
             Pulse.total_low,
             "low pulses (",
             Pulse.total_low * Pulse.total_high,
-            ")."
+            ").",
         )
 
         if "Sample" in name:
             continue
         print("  Part 2")
-        
+
         # raise stop iteration if the pulse is observed
         Watcher.BREAK_ON_LOW_PULSE = True
 
@@ -266,18 +268,28 @@ def go():
         machine.load(data.splitlines())
 
         # check for period of conjunctions
-        conjunctions = [module for module in machine.modules.values() if isinstance(module, Conjunction)]
+        conjunctions = [
+            module
+            for module in machine.modules.values()
+            if isinstance(module, Conjunction)
+        ]
         try:
             while not all([c.period for c in conjunctions]):
                 machine.press_button()
             periods = [c.period for c in conjunctions]
-            print("    rx activated after", numpy.lcm.reduce(numpy.asarray(periods, dtype="ulonglong")), "presses (by calculation).")
+            print(
+                "    rx activated after",
+                numpy.lcm.reduce(numpy.asarray(periods, dtype="ulonglong")),
+                "presses (by calculation).",
+            )
         except StopIteration:
             # desired pulse objserved
-            print(" rx activated after", machine.n_button_pushes, "presses (by observation).")
-
+            print(
+                " rx activated after",
+                machine.n_button_pushes,
+                "presses (by observation).",
+            )
 
 
 if __name__ == "__main__":
     go()
-

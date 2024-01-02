@@ -1,6 +1,7 @@
 import numpy
 from typing import Collection
 
+
 class Hailstone:
     def __init__(self, data) -> None:
         self.load(data)
@@ -43,9 +44,19 @@ class Hailstone:
         #   t1 * self.velocity[0] = (other.origin[0] - self.origin[0]) + (self.origin[1] - other.origin[1]) * other.velocity[0] / other.velocity[1] + t1 * self.velocity[1] * other.velocity[0] / other.velocity[1]
         #   t1 * self.velocity[0] - t1 * self.velocity[1] * other.velocity[0] / other.velocity[1] = (other.origin[0] - self.origin[0]) + (self.origin[1] - other.origin[1]) * other.velocity[0] / other.velocity[1]
         #   t1 * (self.velocity[0] - self.velocity[1] * other.velocity[0] / other.velocity[1]) = (other.origin[0] - self.origin[0]) + (self.origin[1] - other.origin[1]) * other.velocity[0] / other.velocity[1]
-        with numpy.errstate(divide='ignore'):
-            t1 = ((other.origin[0] - self.origin[0]) + (self.origin[1] - other.origin[1]) * other.velocity[0] / other.velocity[1]) / (self.velocity[0] - self.velocity[1] * other.velocity[0] / other.velocity[1])
-            t2 = (self.origin[1] - other.origin[1] + t1 * self.velocity[1]) / other.velocity[1]
+        with numpy.errstate(divide="ignore"):
+            t1 = (
+                (other.origin[0] - self.origin[0])
+                + (self.origin[1] - other.origin[1])
+                * other.velocity[0]
+                / other.velocity[1]
+            ) / (
+                self.velocity[0]
+                - self.velocity[1] * other.velocity[0] / other.velocity[1]
+            )
+            t2 = (
+                self.origin[1] - other.origin[1] + t1 * self.velocity[1]
+            ) / other.velocity[1]
         collision = self.position(t1)
         return collision[:2], t1, t2
 
@@ -107,35 +118,57 @@ def find_rock(hail):
     # so:  rock_parameters = _A_.inverse() * epsilon
 
     # gather 4 terms for the solution for 4 unknowns
-    XY = numpy.zeros((4,4), dtype="double")
-    epsilonXY = numpy.zeros((4,1), dtype="double")
+    XY = numpy.zeros((4, 4), dtype="double")
+    epsilonXY = numpy.zeros((4, 1), dtype="double")
 
     # repeat analagous calculation for z - swap all indices from [1] -> [2]
-    XZ = numpy.zeros((4,4), dtype="double")
-    epsilonXZ = numpy.zeros((4,1), dtype="double")
+    XZ = numpy.zeros((4, 4), dtype="double")
+    epsilonXZ = numpy.zeros((4, 1), dtype="double")
 
     for N in range(1, 5):
-        XY[N-1, 0] = hail[N].velocity[1] - hail[0].velocity[1]
-        XY[N-1, 1] = hail[0].velocity[0] - hail[N].velocity[0]
-        XY[N-1, 2] = hail[0].origin[1] - hail[N].origin[1]
-        XY[N-1, 3] = hail[N].origin[0] - hail[0].origin[0]
-        epsilonXY[N-1] = hail[N].origin[0] * hail[N].velocity[1] - hail[0].origin[0] * hail[0].velocity[1] + hail[0].origin[1] * hail[0].velocity[0] - hail[N].origin[1] * hail[N].velocity[0]
+        XY[N - 1, 0] = hail[N].velocity[1] - hail[0].velocity[1]
+        XY[N - 1, 1] = hail[0].velocity[0] - hail[N].velocity[0]
+        XY[N - 1, 2] = hail[0].origin[1] - hail[N].origin[1]
+        XY[N - 1, 3] = hail[N].origin[0] - hail[0].origin[0]
+        epsilonXY[N - 1] = (
+            hail[N].origin[0] * hail[N].velocity[1]
+            - hail[0].origin[0] * hail[0].velocity[1]
+            + hail[0].origin[1] * hail[0].velocity[0]
+            - hail[N].origin[1] * hail[N].velocity[0]
+        )
 
-        XZ[N-1, 0] = hail[N].velocity[2] - hail[0].velocity[2]
-        XZ[N-1, 1] = hail[0].velocity[0] - hail[N].velocity[0]
-        XZ[N-1, 2] = hail[0].origin[2] - hail[N].origin[2]
-        XZ[N-1, 3] = hail[N].origin[0] - hail[0].origin[0]
-        epsilonXZ[N-1] = hail[N].origin[0] * hail[N].velocity[2] - hail[0].origin[0] * hail[0].velocity[2] + hail[0].origin[2] * hail[0].velocity[0] - hail[N].origin[2] * hail[N].velocity[0]
+        XZ[N - 1, 0] = hail[N].velocity[2] - hail[0].velocity[2]
+        XZ[N - 1, 1] = hail[0].velocity[0] - hail[N].velocity[0]
+        XZ[N - 1, 2] = hail[0].origin[2] - hail[N].origin[2]
+        XZ[N - 1, 3] = hail[N].origin[0] - hail[0].origin[0]
+        epsilonXZ[N - 1] = (
+            hail[N].origin[0] * hail[N].velocity[2]
+            - hail[0].origin[0] * hail[0].velocity[2]
+            + hail[0].origin[2] * hail[0].velocity[0]
+            - hail[N].origin[2] * hail[N].velocity[0]
+        )
 
-    rock_parametersXY = numpy.round(numpy.asmatrix(XY).getI() * epsilonXY).astype("int64")
-    rock_parametersXZ = numpy.round(numpy.asmatrix(XZ).getI() * epsilonXZ).astype("int64")
+    rock_parametersXY = numpy.round(numpy.asmatrix(XY).getI() * epsilonXY).astype(
+        "int64"
+    )
+    rock_parametersXZ = numpy.round(numpy.asmatrix(XZ).getI() * epsilonXZ).astype(
+        "int64"
+    )
 
     # make sure the x value is the same
-    assert rock_parametersXY[0,0] == rock_parametersXZ[0,0]
-    assert rock_parametersXY[2,0] == rock_parametersXZ[2,0]
+    assert rock_parametersXY[0, 0] == rock_parametersXZ[0, 0]
+    assert rock_parametersXY[2, 0] == rock_parametersXZ[2, 0]
 
-    rock_origin = rock_parametersXY[0,0], rock_parametersXY[1,0], rock_parametersXZ[1,0]
-    rock_velocity = rock_parametersXY[2,0], rock_parametersXY[3,0], rock_parametersXZ[3,0]
+    rock_origin = (
+        rock_parametersXY[0, 0],
+        rock_parametersXY[1, 0],
+        rock_parametersXZ[1, 0],
+    )
+    rock_velocity = (
+        rock_parametersXY[2, 0],
+        rock_parametersXY[3, 0],
+        rock_parametersXZ[3, 0],
+    )
 
     return rock_origin, rock_velocity
 
@@ -152,14 +185,14 @@ def load(data):
 def go():
     data_list = list()
 
-    from DataSample import DAY_24 as SAMPLE
+    from .DataSample import DAY_24 as SAMPLE
 
     data_list.append(
         ("Sample", SAMPLE, [(numpy.greater_equal, 7.0), (numpy.less_equal, 27.0)])
     )
 
     try:
-        from DataFull_ import DAY_24 as DATA
+        from .DataFull_ import DAY_24 as DATA
 
         data_list.append(
             ("Full data", DATA, [(numpy.greater_equal, 2e14), (numpy.less_equal, 4e14)])
@@ -189,13 +222,13 @@ def go():
                     continue
                 collision_counts += 1
 
-        print(" ", collision_counts, "collisions in area", [b for a,b in limits])
+        print(" ", collision_counts, "collisions in area", [b for a, b in limits])
 
         # PART 2
 
         rock_origin, rock_velocity = find_rock(hail)
-        print ("  Rock origin:", rock_origin, sum(rock_origin))
-        print ("  Rock velocity:", rock_velocity)
+        print("  Rock origin:", rock_origin, sum(rock_origin))
+        print("  Rock velocity:", rock_velocity)
 
 
 def to_blender(hailstones: Collection["Hailstone"], meshname="Hail"):
@@ -204,11 +237,12 @@ def to_blender(hailstones: Collection["Hailstone"], meshname="Hail"):
     """
     import bmesh
     import bpy
+
     bm = bmesh.new()
     velocity_layer = bm.verts.layers.float_vector.new("velocity")
     for hailstone in hailstones:
         v = bm.verts.new(hailstone.origin)
-        v[velocity_layer] = (hailstone.velocity)
+        v[velocity_layer] = hailstone.velocity
     bm.verts.ensure_lookup_table()
 
     mesh = bpy.data.meshes.new(meshname)
