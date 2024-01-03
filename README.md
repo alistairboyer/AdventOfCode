@@ -7,15 +7,20 @@ Advent of Code 2023
   I was a bit late to the party but here are some random solutions to the 2023 challenge using python.
 
 
+Day 5
+-----
+  This frustrated me fro a long time but starting late gave plenty of other challenges to distract me.
+  It was very easy to set up the first part by walking through the mappings. 
+  Then BANG the second part hits, and there is no way you can brute force this one so time for a new approach. 
+  I had a basic plan quite quickly but it took lots of debugging and doodling on paper to get the order of operations and iterations exactly right.
+
 Day 10
 ------
   ![Pipe maze output from Advent of Code 2023 Day 10](Day10.png)
 
-
 Day 15
 ------
   Quite a quick challenge today! Easy to expliot the datastructures in python to perform this calculation exactly as described in the challenge. I followed the instructions verbatim for HASH and popped all the information into an OrderedDict, expliting del to remove anything. This was good because it gave me time to sort out day 12.
-
 
 Day 16
 ------
@@ -35,15 +40,16 @@ Day 16
   Part two could have been a big one but the answer was revealed by brute force in only a few seconds.
   If the maze was bigger, or the challenge more complex an speedup could be achieved by caching
   light paths because brute force would have sent that poor reindeer all over the lava production facility
-  with light repeating multiple times.
-  
+  with light repeating multiple times. 
 
-Day 5
------
-  FINALLY DONE! This has been bothering me for a few days but starting late gave plenty of other challenges to distract from this one.
-  Very easy to set up the first part by walking through the mappings. 
-  Then BANG the second part hits, and there is no way you can brute force this one so time for a new approach. 
-  I had a basic plan quite quickly but it took lots of debugging and doodling on paper to get the order of operations and iterations exactly right.
+Day 17
+------
+  Interesting graph problem that took a while to match my code with the algorithm in my head.
+  I was concerned from the start about how to manage the problem that a worse route might turn out better later on. 
+  At each point I considered all possible steps in a given direction at once,
+  and rather than save the best score at every location, I saved the score at every location by next destination.
+  Once working with the sample, I did some tuning to balance considered routes in terms of lowest score vs closeness to end.
+  I was so rigorous in getting part one working that the second part only took a few additional lines of code!
 
 Day 18
 ------
@@ -56,7 +62,6 @@ Day 18
   Updating the algorithm only to look for horizontal lines and then consider the lines between each,
   so now the time taken to calculate area is dependent only on the complexity of the shape and no the length of any line.
   ![Sample lava trenches from Advent of Code 2023 Day 18](Day18.png)
-
 
 Day 19
 ------
@@ -87,7 +92,6 @@ Day 24
   Not so much a problem in coding as a problem in maths! Pretty good rock throw though!
   ![Throwing rocks at hailstones sample from Advent of Code 2023 Day 24](Day24.gif)
 
-
 Day 25
 ------
   I think we had been bad this year because santa gave a graph problem on Christmas morning.
@@ -96,4 +100,3 @@ Day 25
   This was quite slow and does not guarantee an answer for all graphs but it worked!
   ![Sample graph from Advent of Code 2023 Day 25](Day25.png)
 
-  
