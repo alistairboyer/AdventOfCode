@@ -87,6 +87,14 @@ Day 22
   The only major issue I had was that my code didn't drop blocks that were above nothing to start with, but after that everything worked ok!
   ![Falling blocks sample from Advent of Code 2023 Day 22](Day22.gif)
 
+Day 23
+------
+  I imported the map as a 2D numpy array with a charachter for each location.
+  Then processed the map by padding it with "#" and the slicing in each cardinal direction to calculate the type of each square as a bit set.
+  Any points with 3, 4 or 1 neighbors create a Junction object (1 being entry and exit points).
+  Any points with 2 neighbors are gathered into Path objects and connected to the junctions that they meet.
+  This gives a graph of junctions connected by paths, then traverse the whole graph not particularly imaginatively keeping score
+
 Day 24
 ------
   Not so much a problem in coding as a problem in maths! Pretty good rock throw though!
