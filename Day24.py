@@ -185,14 +185,14 @@ def load(data):
 def go():
     data_list = list()
 
-    from .DataSample import DAY_24 as SAMPLE
+    from DataSample import DAY_24 as SAMPLE
 
     data_list.append(
         ("Sample", SAMPLE, [(numpy.greater_equal, 7.0), (numpy.less_equal, 27.0)])
     )
 
     try:
-        from .DataFull_ import DAY_24 as DATA
+        from DataFull_ import DAY_24 as DATA
 
         data_list.append(
             ("Full data", DATA, [(numpy.greater_equal, 2e14), (numpy.less_equal, 4e14)])
