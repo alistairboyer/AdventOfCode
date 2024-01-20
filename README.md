@@ -16,7 +16,7 @@ Day 5
 
 Day 10
 ------
-  ![Pipe maze output from Advent of Code 2023 Day 10](Day10.png)
+  ![Pipe maze output from Advent of Code 2023 Day 10](2023/Day10.png)
 
 Day 15
 ------
@@ -61,7 +61,7 @@ Day 18
   Thinking harder, the enclosed and trench area of a ray only changes on a row with at least one horizontal line.
   Updating the algorithm only to look for horizontal lines and then consider the lines between each,
   so now the time taken to calculate area is dependent only on the complexity of the shape and no the length of any line.
-  ![Sample lava trenches from Advent of Code 2023 Day 18](Day18.png)
+  ![Sample lava trenches from Advent of Code 2023 Day 18](2023/Day18.png)
 
 Day 19
 ------
@@ -85,7 +85,7 @@ Day 22
   Then the falling is implemented from the bottom of the stack up by slicing beneath the xy cross section of each block and checking for the first object.
   The objects are linked together so that the reliance of blocks on blocks underneath can be checked later.
   The only major issue I had was that my code didn't drop blocks that were above nothing to start with, but after that everything worked ok!
-  ![Falling blocks sample from Advent of Code 2023 Day 22](Day22.gif)
+  ![Falling blocks sample from Advent of Code 2023 Day 22](2023/Day22.gif)
 
 Day 23
 ------
@@ -98,7 +98,7 @@ Day 23
 Day 24
 ------
   Not so much a problem in coding as a problem in maths! Pretty good rock throw though!
-  ![Throwing rocks at hailstones sample from Advent of Code 2023 Day 24](Day24.gif)
+  ![Throwing rocks at hailstones sample from Advent of Code 2023 Day 24](2023/Day24.gif)
 
 Day 25
 ------
@@ -106,5 +106,5 @@ Day 25
   I had a quick look at graphviz's neato version of the challenge and it is very clear to see the three links that needed cutting. 
   Algorithmically, I started from each node and condensed edges to adjoining nodes until the number of links going out was only three. 
   This was quite slow and does not guarantee an answer for all graphs but it worked!
-  ![Sample graph from Advent of Code 2023 Day 25](Day25.png)
+  ![Sample graph from Advent of Code 2023 Day 25](2023/Day25.png)
 
