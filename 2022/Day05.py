@@ -90,9 +90,13 @@ class BoxStack:
     def process_commands(self, reverse_transferred_boxes: bool = False) -> None:
         """Process all stored commands."""
         for command in self.commands:
-            self.process_command(command, reverse_transferred_boxes=reverse_transferred_boxes)
+            self.process_command(
+                command, reverse_transferred_boxes=reverse_transferred_boxes
+            )
 
-    def process_command(self, command: Command, reverse_transferred_boxes: bool = False) -> None:
+    def process_command(
+        self, command: Command, reverse_transferred_boxes: bool = False
+    ) -> None:
         """Process a command."""
         # get the boxes for transfer
         transfer = self.stacks[command.fr][-command.count :]

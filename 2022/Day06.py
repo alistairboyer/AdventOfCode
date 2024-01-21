@@ -4,10 +4,11 @@ import collections
 
 def find_unique(s: str, n: int):
     """Return the index of the first occurance of n unique chars in a str; or return -1."""
-    for i in range(0, len(s)-n):
-        if len(set(s[i:i+n])) == n:
+    for i in range(0, len(s) - n):
+        if len(set(s[i : i + n])) == n:
             return i
     return -1
+
 
 def go():
     data_list = list()
@@ -32,11 +33,10 @@ def go():
         pass
 
     for name, data in data_list:
-        print(name, data[:97]+'...' if len(data)>100 else data)
-        print("  start @",find_unique(data, 4)+4)
-        print("  message @",find_unique(data, 14)+14)
+        print(name, data[:97] + "..." if len(data) > 100 else data)
+        print("  start @", find_unique(data, 4) + 4)
+        print("  message @", find_unique(data, 14) + 14)
 
 
 if __name__ == "__main__":
     go()
-
