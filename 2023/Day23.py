@@ -19,7 +19,7 @@ class WalkMap:
         """
         Save all the points in the map as int with a flag bit coresponding to each open direction
         """
-        
+
         # initialise the data
         self.accessible_points = numpy.zeros(self.map.shape, dtype="uint8")
 
@@ -83,12 +83,10 @@ class WalkMap:
             # update the paths_to_process to keep track
             self._add_path(location, paths_to_process)
 
-
- 
     def _add_path(self, location, paths_to_process):
-
-
-        def _follow_path(location, direction, blocked_forwards=False, blocked_backwards=False):
+        def _follow_path(
+            location, direction, blocked_forwards=False, blocked_backwards=False
+        ):
             """
             Follow a path to end collecting information along the way.
             """
@@ -107,7 +105,6 @@ class WalkMap:
 
             return location, blocked_forwards, blocked_backwards
 
-
         # store the route of the path
         route = [location]
         # set the process list to 0 because this location is processed
@@ -120,7 +117,9 @@ class WalkMap:
         start, blocked_forwards, blocked_backwards = _follow_path(location, backwards)
         # flip the saved route and follow the path forwards
         route.reverse()
-        end, blocked_forwards, blocked_backwards = _follow_path(location, forwards, blocked_backwards, blocked_forwards)
+        end, blocked_forwards, blocked_backwards = _follow_path(
+            location, forwards, blocked_backwards, blocked_forwards
+        )
         # dead end
         if not self.accessible_points[start] or not self.accessible_points[end]:
             return
@@ -140,7 +139,6 @@ class WalkMap:
         self.junctions[start].paths.append(path)
         self.junctions[end].paths.append(path)
 
-
     def traverse(self, from_junction, to_junction):
         if isinstance(from_junction, str):
             from_junction = self.junctions[from_junction]
@@ -153,7 +151,7 @@ class WalkMap:
         # complete = list()
 
         while active:
-           
+
             # get the route
             junction, length, visited = active.popleft()
 
@@ -287,14 +285,15 @@ def go():
     data_list = list()
 
     from DataSample import DAY_23 as SAMPLE
+
     data_list.append(("Sample", SAMPLE))
 
     try:
-       from DataFull_ import DAY_23 as DATA
-       data_list.append(("Full Data", DATA))
-    except ImportError:
-       pass
+        from DataFull_ import DAY_23 as DATA
 
+        data_list.append(("Full Data", DATA))
+    except ImportError:
+        pass
 
     for name, data in data_list:
         print(name)

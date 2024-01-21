@@ -1,3 +1,9 @@
+DAY_06 = """mjqjpqmgbljsphdztnvjfqwrcgsmlb"""
+DAY_06A = """bvwbjplbgvbhsrlpgdmjqwftvncz"""
+DAY_06B = """nppdvjthqldpwncqszvftbrmjlhg"""
+DAY_06C = """nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg"""
+DAY_06D = """zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"""
+
 DAY_05 = """
     [D]    
 [N] [C]    
